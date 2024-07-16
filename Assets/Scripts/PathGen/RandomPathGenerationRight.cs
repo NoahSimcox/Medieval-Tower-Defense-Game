@@ -7,14 +7,6 @@ namespace PathGen
 {
     public class RandomPathGenerationRight : MonoBehaviour
     {
-        private Orientation startOrientation = 0;
-        private Orientation _endOrientation;
-
-        public enum Orientation
-        {
-            Horizontal,
-            Vertical
-        }
         public enum Direction
         {
             Right,
@@ -25,14 +17,12 @@ namespace PathGen
 
         public struct Tile
         {
-            public Orientation Orientation;
             public Direction Direction;
             public Vector2Int Position;
             public TileBase Type;
-
         }
 
-        public List<Tile> RandomPathGen(Vector2Int startPos, out Vector2Int endPos, Orientation startingOrientation, Direction startingTileDirection,
+        public List<Tile> RandomPathGen(Vector2Int startPos, out Vector2Int endPos, Direction startingTileDirection,
             TileBase startingTileType, TileBase vertical, TileBase horizontal, TileBase upRight, TileBase upLeft,
             TileBase downRight, TileBase downLeft, int width, int height, Vector2Int startPosition)
         {
@@ -40,7 +30,6 @@ namespace PathGen
             int pathCount = 0;
 
             Tile startingTile = new Tile();
-            startingTile.Orientation = startingOrientation;
             startingTile.Position = startPos;
             startingTile.Type = startingTileType;
             startingTile.Direction = startingTileDirection;
@@ -51,7 +40,7 @@ namespace PathGen
             {
                 Tile tile = new Tile();
 
-                switch (currentPath[pathCount].Orientation)
+                switch (currentPath[pathCount].Orientation) // change all this to switch based on direction not orientation. direction is far more descriptive and only leaves two possible turns and one straight movement from each direction.
                 {
                     case Orientation.Horizontal:
                         if (Random.Range(0.0f, 10.0f) <= 6.0f)
