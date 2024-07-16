@@ -15,16 +15,24 @@ namespace PathGen
             Horizontal,
             Vertical
         }
+        public enum Direction
+        {
+            Right,
+            Left, 
+            Up, 
+            Down
+        }
 
         public struct Tile
         {
             public Orientation Orientation;
+            public Direction Direction;
             public Vector2Int Position;
             public TileBase Type;
 
         }
 
-        public List<Tile> RandomPathGen(Vector2Int startPos, out Vector2Int endPos, Orientation startingOrientation,
+        public List<Tile> RandomPathGen(Vector2Int startPos, out Vector2Int endPos, Orientation startingOrientation, Direction startingTileDirection,
             TileBase startingTileType, TileBase vertical, TileBase horizontal, TileBase upRight, TileBase upLeft,
             TileBase downRight, TileBase downLeft, int width, int height, Vector2Int startPosition)
         {
@@ -35,6 +43,7 @@ namespace PathGen
             startingTile.Orientation = startingOrientation;
             startingTile.Position = startPos;
             startingTile.Type = startingTileType;
+            startingTile.Direction = startingTileDirection;
             currentPath[pathCount] = startingTile;
 
             while (currentPath[pathCount].Position.x < width + startPosition.x &&
