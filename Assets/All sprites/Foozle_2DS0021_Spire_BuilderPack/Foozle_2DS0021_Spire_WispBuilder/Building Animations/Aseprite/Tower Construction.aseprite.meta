@@ -1,0 +1,1096 @@
+fileFormatVersion: 2
+guid: 8f6ba4697b68d1940be9f8e8a46b7a33
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: Tower Construction_Frame_0
+    originalName: 
+    pivot: {x: 0.07142857, y: -0.48854962}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 570
+      width: 448
+      height: 131
+    spriteID: a0a47ebf74d16034aa9f018b93f5241a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 570}
+  - name: Tower Construction_Frame_5
+    originalName: 
+    pivot: {x: 0.07142857, y: -0.48854962}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 709
+      width: 448
+      height: 131
+    spriteID: c81247a8dbdee8f4e818b7565c1aaba9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 709}
+  - name: Tower Construction_Frame_6
+    originalName: 
+    pivot: {x: 0.09170306, y: -0.43382353}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 146
+      width: 458
+      height: 136
+    spriteID: d4e6ffaec0b266f478a703b56a940baf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 146}
+  - name: Tower Construction_Frame_10
+    originalName: 
+    pivot: {x: 0.10729615, y: -0.45522386}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 466
+      height: 134
+    spriteID: 20daa0455188fb7408d436839348e134
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: Tower Construction_Frame_11
+    originalName: 
+    pivot: {x: 0.07142857, y: -0.48854962}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 848
+      width: 448
+      height: 131
+    spriteID: 1ecdc818bfa29eb46948438ef4ea25be
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 848}
+  - name: Tower Construction_Frame_16
+    originalName: 
+    pivot: {x: 0.07142857, y: -0.48854962}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 987
+      width: 448
+      height: 131
+    spriteID: 7da99cec5a51d42409cce51b1ed32419
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 987}
+  - name: Tower Construction_Frame_17
+    originalName: 
+    pivot: {x: 0.4878049, y: -0.43065694}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 478
+      y: 1533
+      width: 82
+      height: 137
+    spriteID: 52e552885a8228246aa9009a45da04d2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 478, y: 1533}
+  - name: Tower Construction_Frame_19
+    originalName: 
+    pivot: {x: 0.4895833, y: -0.4848485}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 478
+      y: 694
+      width: 96
+      height: 132
+    spriteID: 92122f1fa03691a4993ad04ff4c16d00
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 478, y: 694}
+  - name: Tower Construction_Frame_22
+    originalName: 
+    pivot: {x: 0.49999997, y: -0.50793654}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 954
+      y: 4
+      width: 64
+      height: 126
+    spriteID: df821a3fca0cfdd45a8023878d838eb9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 954, y: 4}
+  - name: Tower Construction_Frame_25
+    originalName: 
+    pivot: {x: 0.4776119, y: -0.50793654}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 478
+      y: 1823
+      width: 67
+      height: 126
+    spriteID: 29e7b60836c995448968bbe408253010
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 478, y: 1823}
+  - name: Tower Construction_Frame_1
+    originalName: 
+    pivot: {x: 0.07142857, y: -0.48854962}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1126
+      width: 448
+      height: 131
+    spriteID: 82b361e3819ca6844b739a8d5c1a0bcd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1126}
+  - name: Tower Construction_Frame_2
+    originalName: 
+    pivot: {x: 0.07142857, y: -0.48854962}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1265
+      width: 448
+      height: 131
+    spriteID: 2481b15ced2e1c94587030899143e45e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1265}
+  - name: Tower Construction_Frame_3
+    originalName: 
+    pivot: {x: 0.07142857, y: -0.48854962}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1404
+      width: 448
+      height: 131
+    spriteID: ae44932afca3ffe459d3ca4580a892ae
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1404}
+  - name: Tower Construction_Frame_4
+    originalName: 
+    pivot: {x: 0.07142857, y: -0.48854962}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1543
+      width: 448
+      height: 131
+    spriteID: 2319e62632b799d47afbbe8b449e1c6b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1543}
+  - name: Tower Construction_Frame_7
+    originalName: 
+    pivot: {x: 0.10151187, y: -0.46616542}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 290
+      width: 463
+      height: 133
+    spriteID: 458c046059edf614e9df9e2a941a1089
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 290}
+  - name: Tower Construction_Frame_8
+    originalName: 
+    pivot: {x: 0.10537633, y: -0.48854962}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 431
+      width: 465
+      height: 131
+    spriteID: 00315d233d1257d4989e3006775c05c2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 431}
+  - name: Tower Construction_Frame_9
+    originalName: 
+    pivot: {x: 0.111111104, y: -0.46616542}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 478
+      y: 4
+      width: 468
+      height: 133
+    spriteID: 92c6b3831f3c0314089bcce6e246fe30
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 478, y: 4}
+  - name: Tower Construction_Frame_12
+    originalName: 
+    pivot: {x: 0.07142857, y: -0.48854962}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1682
+      width: 448
+      height: 131
+    spriteID: 31f9fae62e24b3d42b4cfb2f3e86f88b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1682}
+  - name: Tower Construction_Frame_13
+    originalName: 
+    pivot: {x: 0.07142857, y: -0.48854962}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1821
+      width: 448
+      height: 131
+    spriteID: 45de015734fe6b34b86429d0d8aa0038
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1821}
+  - name: Tower Construction_Frame_14
+    originalName: 
+    pivot: {x: 0.07142857, y: -0.48854962}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 478
+      y: 145
+      width: 448
+      height: 131
+    spriteID: 3a077772677095c46973eed3903e9621
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 478, y: 145}
+  - name: Tower Construction_Frame_15
+    originalName: 
+    pivot: {x: 0.07142857, y: -0.48854962}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 478
+      y: 284
+      width: 448
+      height: 131
+    spriteID: d785768c4c440824b9af8ba600130f3a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 478, y: 284}
+  - name: Tower Construction_Frame_18
+    originalName: 
+    pivot: {x: 0.47777784, y: -0.44927537}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 478
+      y: 974
+      width: 90
+      height: 138
+    spriteID: b68dec90b140a684c9a5d23775284429
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 478, y: 974}
+  - name: Tower Construction_Frame_20
+    originalName: 
+    pivot: {x: 0.48, y: -0.484375}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 478
+      y: 423
+      width: 100
+      height: 128
+    spriteID: da8b2c2e37da95f4ab1c499b225c8846
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 478, y: 423}
+  - name: Tower Construction_Frame_21
+    originalName: 
+    pivot: {x: 0.4791667, y: -0.4728682}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 478
+      y: 1266
+      width: 96
+      height: 129
+    spriteID: ca3831ee9473d0d4093bdad80a3eaa3f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 478, y: 1266}
+  - name: Tower Construction_Frame_23
+    originalName: 
+    pivot: {x: 0.49999997, y: -0.50793654}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 586
+      y: 423
+      width: 64
+      height: 126
+    spriteID: fdd47a1fb8db5334c80f629a78ff2605
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 586, y: 423}
+  - name: Tower Construction_Frame_24
+    originalName: 
+    pivot: {x: 0.49999997, y: -0.50793654}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 586
+      y: 557
+      width: 64
+      height: 126
+    spriteID: dc09ab1c5d5e3ba44ad8cd715e92833e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 586, y: 557}
+  - name: Tower Construction_Frame_26
+    originalName: 
+    pivot: {x: 0.45714283, y: -0.50793654}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 934
+      y: 284
+      width: 70
+      height: 126
+    spriteID: b9ca0c5f8f9a01e4ab6894a08bef6117
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 934, y: 284}
+  - name: Tower Construction_Frame_27
+    originalName: 
+    pivot: {x: 0.44444442, y: -0.50793654}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 934
+      y: 145
+      width: 72
+      height: 126
+    spriteID: eb592cb358ebd724a949c1f690ea09f9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 934, y: 145}
+  - name: Tower Construction_Frame_28
+    originalName: 
+    pivot: {x: 0.4878049, y: -0.43065694}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 478
+      y: 1678
+      width: 82
+      height: 137
+    spriteID: 2474ae3e47741c3409b9f9f1a532b874
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 478, y: 1678}
+  - name: Tower Construction_Frame_29
+    originalName: 
+    pivot: {x: 0.47777784, y: -0.44927537}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 478
+      y: 1120
+      width: 90
+      height: 138
+    spriteID: 94865879660a5f543b9fab4c64d774f9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 478, y: 1120}
+  - name: Tower Construction_Frame_30
+    originalName: 
+    pivot: {x: 0.4895833, y: -0.4848485}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 478
+      y: 834
+      width: 96
+      height: 132
+    spriteID: 194cd6d9aaf1ed24ea7ce9efdb9b450e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 478, y: 834}
+  - name: Tower Construction_Frame_31
+    originalName: 
+    pivot: {x: 0.48, y: -0.48818898}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 478
+      y: 559
+      width: 100
+      height: 127
+    spriteID: 48a696c3e7ad60a49b4b1621d4cb2231
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 478, y: 559}
+  - name: Tower Construction_Frame_32
+    originalName: 
+    pivot: {x: 0.4791667, y: -0.49999997}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 478
+      y: 1403
+      width: 96
+      height: 122
+    spriteID: 0f013fef6731c6544a5029c4c73d24f4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 478, y: 1403}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: 1192423724
+    name: Tower Construction
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Tower Construction_Frame_0
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 64
+        y: 64
+        width: 448
+        height: 131
+      spriteId: a0a47ebf74d16034aa9f018b93f5241a
+    - name: Tower Construction_Frame_5
+      frameIndex: 5
+      additiveSortOrder: 0
+      cellRect:
+        x: 64
+        y: 64
+        width: 448
+        height: 131
+      spriteId: c81247a8dbdee8f4e818b7565c1aaba9
+    - name: Tower Construction_Frame_6
+      frameIndex: 6
+      additiveSortOrder: 0
+      cellRect:
+        x: 54
+        y: 59
+        width: 458
+        height: 136
+      spriteId: d4e6ffaec0b266f478a703b56a940baf
+    - name: Tower Construction_Frame_10
+      frameIndex: 10
+      additiveSortOrder: 0
+      cellRect:
+        x: 46
+        y: 61
+        width: 466
+        height: 134
+      spriteId: 20daa0455188fb7408d436839348e134
+    - name: Tower Construction_Frame_11
+      frameIndex: 11
+      additiveSortOrder: 0
+      cellRect:
+        x: 64
+        y: 64
+        width: 448
+        height: 131
+      spriteId: 1ecdc818bfa29eb46948438ef4ea25be
+    - name: Tower Construction_Frame_16
+      frameIndex: 16
+      additiveSortOrder: 0
+      cellRect:
+        x: 64
+        y: 64
+        width: 448
+        height: 131
+      spriteId: 7da99cec5a51d42409cce51b1ed32419
+    - name: Tower Construction_Frame_17
+      frameIndex: 17
+      additiveSortOrder: 0
+      cellRect:
+        x: 56
+        y: 59
+        width: 82
+        height: 137
+      spriteId: 52e552885a8228246aa9009a45da04d2
+    - name: Tower Construction_Frame_19
+      frameIndex: 19
+      additiveSortOrder: 0
+      cellRect:
+        x: 49
+        y: 64
+        width: 96
+        height: 132
+      spriteId: 92122f1fa03691a4993ad04ff4c16d00
+    - name: Tower Construction_Frame_22
+      frameIndex: 22
+      additiveSortOrder: 0
+      cellRect:
+        x: 64
+        y: 64
+        width: 64
+        height: 126
+      spriteId: df821a3fca0cfdd45a8023878d838eb9
+    - name: Tower Construction_Frame_25
+      frameIndex: 25
+      additiveSortOrder: 0
+      cellRect:
+        x: 64
+        y: 64
+        width: 67
+        height: 126
+      spriteId: 29e7b60836c995448968bbe408253010
+    - name: Tower Construction_Frame_1
+      frameIndex: 1
+      additiveSortOrder: 0
+      cellRect:
+        x: 64
+        y: 64
+        width: 448
+        height: 131
+      spriteId: 82b361e3819ca6844b739a8d5c1a0bcd
+    - name: Tower Construction_Frame_2
+      frameIndex: 2
+      additiveSortOrder: 0
+      cellRect:
+        x: 64
+        y: 64
+        width: 448
+        height: 131
+      spriteId: 2481b15ced2e1c94587030899143e45e
+    - name: Tower Construction_Frame_3
+      frameIndex: 3
+      additiveSortOrder: 0
+      cellRect:
+        x: 64
+        y: 64
+        width: 448
+        height: 131
+      spriteId: ae44932afca3ffe459d3ca4580a892ae
+    - name: Tower Construction_Frame_4
+      frameIndex: 4
+      additiveSortOrder: 0
+      cellRect:
+        x: 64
+        y: 64
+        width: 448
+        height: 131
+      spriteId: 2319e62632b799d47afbbe8b449e1c6b
+    - name: Tower Construction_Frame_7
+      frameIndex: 7
+      additiveSortOrder: 0
+      cellRect:
+        x: 49
+        y: 62
+        width: 463
+        height: 133
+      spriteId: 458c046059edf614e9df9e2a941a1089
+    - name: Tower Construction_Frame_8
+      frameIndex: 8
+      additiveSortOrder: 0
+      cellRect:
+        x: 47
+        y: 64
+        width: 465
+        height: 131
+      spriteId: 00315d233d1257d4989e3006775c05c2
+    - name: Tower Construction_Frame_9
+      frameIndex: 9
+      additiveSortOrder: 0
+      cellRect:
+        x: 44
+        y: 62
+        width: 468
+        height: 133
+      spriteId: 92c6b3831f3c0314089bcce6e246fe30
+    - name: Tower Construction_Frame_12
+      frameIndex: 12
+      additiveSortOrder: 0
+      cellRect:
+        x: 64
+        y: 64
+        width: 448
+        height: 131
+      spriteId: 31f9fae62e24b3d42b4cfb2f3e86f88b
+    - name: Tower Construction_Frame_13
+      frameIndex: 13
+      additiveSortOrder: 0
+      cellRect:
+        x: 64
+        y: 64
+        width: 448
+        height: 131
+      spriteId: 45de015734fe6b34b86429d0d8aa0038
+    - name: Tower Construction_Frame_14
+      frameIndex: 14
+      additiveSortOrder: 0
+      cellRect:
+        x: 64
+        y: 64
+        width: 448
+        height: 131
+      spriteId: 3a077772677095c46973eed3903e9621
+    - name: Tower Construction_Frame_15
+      frameIndex: 15
+      additiveSortOrder: 0
+      cellRect:
+        x: 64
+        y: 64
+        width: 448
+        height: 131
+      spriteId: d785768c4c440824b9af8ba600130f3a
+    - name: Tower Construction_Frame_18
+      frameIndex: 18
+      additiveSortOrder: 0
+      cellRect:
+        x: 53
+        y: 62
+        width: 90
+        height: 138
+      spriteId: b68dec90b140a684c9a5d23775284429
+    - name: Tower Construction_Frame_20
+      frameIndex: 20
+      additiveSortOrder: 0
+      cellRect:
+        x: 48
+        y: 62
+        width: 100
+        height: 128
+      spriteId: da8b2c2e37da95f4ab1c499b225c8846
+    - name: Tower Construction_Frame_21
+      frameIndex: 21
+      additiveSortOrder: 0
+      cellRect:
+        x: 50
+        y: 61
+        width: 96
+        height: 129
+      spriteId: ca3831ee9473d0d4093bdad80a3eaa3f
+    - name: Tower Construction_Frame_23
+      frameIndex: 23
+      additiveSortOrder: 0
+      cellRect:
+        x: 64
+        y: 64
+        width: 64
+        height: 126
+      spriteId: fdd47a1fb8db5334c80f629a78ff2605
+    - name: Tower Construction_Frame_24
+      frameIndex: 24
+      additiveSortOrder: 0
+      cellRect:
+        x: 64
+        y: 64
+        width: 64
+        height: 126
+      spriteId: dc09ab1c5d5e3ba44ad8cd715e92833e
+    - name: Tower Construction_Frame_26
+      frameIndex: 26
+      additiveSortOrder: 0
+      cellRect:
+        x: 64
+        y: 64
+        width: 70
+        height: 126
+      spriteId: b9ca0c5f8f9a01e4ab6894a08bef6117
+    - name: Tower Construction_Frame_27
+      frameIndex: 27
+      additiveSortOrder: 0
+      cellRect:
+        x: 64
+        y: 64
+        width: 72
+        height: 126
+      spriteId: eb592cb358ebd724a949c1f690ea09f9
+    - name: Tower Construction_Frame_28
+      frameIndex: 28
+      additiveSortOrder: 0
+      cellRect:
+        x: 56
+        y: 59
+        width: 82
+        height: 137
+      spriteId: 2474ae3e47741c3409b9f9f1a532b874
+    - name: Tower Construction_Frame_29
+      frameIndex: 29
+      additiveSortOrder: 0
+      cellRect:
+        x: 53
+        y: 62
+        width: 90
+        height: 138
+      spriteId: 94865879660a5f543b9fab4c64d774f9
+    - name: Tower Construction_Frame_30
+      frameIndex: 30
+      additiveSortOrder: 0
+      cellRect:
+        x: 49
+        y: 64
+        width: 96
+        height: 132
+      spriteId: 194cd6d9aaf1ed24ea7ce9efdb9b450e
+    - name: Tower Construction_Frame_31
+      frameIndex: 31
+      additiveSortOrder: 0
+      cellRect:
+        x: 48
+        y: 62
+        width: 100
+        height: 127
+      spriteId: 48a696c3e7ad60a49b4b1621d4cb2231
+    - name: Tower Construction_Frame_32
+      frameIndex: 32
+      additiveSortOrder: 0
+      cellRect:
+        x: 50
+        y: 61
+        width: 96
+        height: 122
+      spriteId: 0f013fef6731c6544a5029c4c73d24f4
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 192, y: 256}
