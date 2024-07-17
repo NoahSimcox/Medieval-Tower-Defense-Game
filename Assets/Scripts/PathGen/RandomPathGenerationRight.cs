@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -40,48 +41,111 @@ namespace PathGen
             {
                 Tile tile = new Tile();
 
-                switch (currentPath[pathCount].Orientation) // change all this to switch based on direction not orientation. direction is far more descriptive and only leaves two possible turns and one straight movement from each direction.
+                switch (currentPath[pathCount].Direction)
                 {
-                    case Orientation.Horizontal:
+                    case Direction.Right: // if your moving right
                         if (Random.Range(0.0f, 10.0f) <= 6.0f)
                         {
                             tile.Type = horizontal;
-                            tile.Orientation = Orientation.Horizontal;
+                            tile.Direction = Direction.Right;
+                            
+                            if (currentPath[pathCount].Type == horizontal)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x + 1,
+                                currentPath[pathCount].Position.y);
+                            else
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x + 2,
+                                    currentPath[pathCount].Position.y);
                         }
                         else if (Random.Range(0.0f, 10.0f) <= 8.0f)
                         {
                             tile.Type = upLeft;
-                            tile.Orientation = Orientation.Vertical;
+                            tile.Direction = Direction.Down;
+                            
+                            if (currentPath[pathCount].Type == horizontal)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x + 1,
+                                    currentPath[pathCount].Position.y - 1);
+                            else if (currentPath[pathCount].Type == upRight)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x + 2,
+                                    currentPath[pathCount].Position.y);
+                            else if (currentPath[pathCount].Type == downRight)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x + 2,
+                                    currentPath[pathCount].Position.y - 1);
                         }
                         else
                         {
                             tile.Type = downLeft;
-                            tile.Orientation = Orientation.Vertical;
+                            tile.Direction = Direction.Up;
+                            
+                            if (currentPath[pathCount].Type == horizontal)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x + 1,
+                                    currentPath[pathCount].Position.y);
+                            else if (currentPath[pathCount].Type == upRight)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x + 2,
+                                    currentPath[pathCount].Position.y + 1);
+                            else if (currentPath[pathCount].Type == downRight)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x + 2,
+                                    currentPath[pathCount].Position.y);
                         }
 
                         break;
 
-                    case Orientation.Vertical:
-                        if (Random.Range(0.0f, 10.0f) <= 6.0f)
+                    case Direction.Up: // if your moving up
+                        if (Random.Range(0.0f, 10.0f) <= 7.0f)
+                        {
+                            tile.Type = upRight;
+                            tile.Direction = Direction.Right;
+                        }
+                        else if (Random.Range(0.0f, 10.0f) <= 9.0f) // continue to check the past path types to determine where the next path should be placed
                         {
                             tile.Type = vertical;
-                            tile.Orientation = Orientation.Vertical;
+                            tile.Direction = Direction.Up;
                         }
-                        else if (Random.Range(0.0f, 10.0f) <= 8.0f)
+                        else
                         {
                             tile.Type = upLeft;
-                            tile.Orientation = Orientation.Horizontal;
+                            tile.Direction = Direction.Left;
+                        }
+
+                        break;
+                    
+                    case Direction.Left: // if your moving left
+                        if (Random.Range(0.0f, 10.0f) <= 7.5f)
+                        {
+                            tile.Type = downRight;
+                            tile.Direction = Direction.Up;
+                        }
+                        else if (Random.Range(0.0f, 10.0f) <= 9.0f)
+                        {
+                            tile.Type = horizontal;
+                            tile.Direction = Direction.Left;
                         }
                         else
                         {
                             tile.Type = upRight;
-                            tile.Orientation = Orientation.Horizontal;
+                            tile.Direction = Direction.Down;
+                        }
+
+                        break;
+                    
+                    case Direction.Down: // if your moving down
+                        if (Random.Range(0.0f, 10.0f) <= 7.0f)
+                        {
+                            tile.Type = downRight;
+                            tile.Direction = Direction.Right;
+                        }
+                        else if (Random.Range(0.0f, 10.0f) <= 9.0f)
+                        {
+                            tile.Type = vertical;
+                            tile.Direction = Direction.Down;
+                        }
+                        else
+                        {
+                            tile.Type = downLeft;
+                            tile.Direction = Direction.Left;
                         }
 
                         break;
                 }
-
-                currentPath[pathCount]
             }
         }
     }
