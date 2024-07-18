@@ -51,8 +51,11 @@ namespace PathGen
                             
                             if (currentPath[pathCount].Type == horizontal)
                                 tile.Position = new Vector2Int(currentPath[pathCount].Position.x + 1,
-                                currentPath[pathCount].Position.y);
-                            else
+                                    currentPath[pathCount].Position.y);
+                            else if (currentPath[pathCount].Type == upRight)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x + 2,
+                                    currentPath[pathCount].Position.y + 1);
+                            else if (currentPath[pathCount].Type == downRight)
                                 tile.Position = new Vector2Int(currentPath[pathCount].Position.x + 2,
                                     currentPath[pathCount].Position.y);
                         }
@@ -94,16 +97,46 @@ namespace PathGen
                         {
                             tile.Type = upRight;
                             tile.Direction = Direction.Right;
+                            
+                            if (currentPath[pathCount].Type == vertical)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x,
+                                    currentPath[pathCount].Position.y + 1);
+                            else if (currentPath[pathCount].Type == downLeft)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x + 1,
+                                    currentPath[pathCount].Position.y + 2);
+                            else if (currentPath[pathCount].Type == downRight)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x,
+                                    currentPath[pathCount].Position.y + 2);
                         }
-                        else if (Random.Range(0.0f, 10.0f) <= 9.0f) // continue to check the past path types to determine where the next path should be placed
+                        else if (Random.Range(0.0f, 10.0f) <= 9.0f)
                         {
                             tile.Type = vertical;
                             tile.Direction = Direction.Up;
+                            
+                            if (currentPath[pathCount].Type == vertical)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x,
+                                    currentPath[pathCount].Position.y + 1);
+                            else if (currentPath[pathCount].Type == downLeft)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x + 1,
+                                    currentPath[pathCount].Position.y + 2);
+                            else if (currentPath[pathCount].Type == downRight)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x,
+                                    currentPath[pathCount].Position.y + 2);
                         }
                         else
                         {
                             tile.Type = upLeft;
                             tile.Direction = Direction.Left;
+                            
+                            if (currentPath[pathCount].Type == vertical)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x - 1,
+                                    currentPath[pathCount].Position.y + 1);
+                            else if (currentPath[pathCount].Type == downLeft)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x,
+                                    currentPath[pathCount].Position.y + 2);
+                            else if (currentPath[pathCount].Type == downRight)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x - 1,
+                                    currentPath[pathCount].Position.y + 2);
                         }
 
                         break;
@@ -113,16 +146,46 @@ namespace PathGen
                         {
                             tile.Type = downRight;
                             tile.Direction = Direction.Up;
+                            
+                            if (currentPath[pathCount].Type == horizontal)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x - 2,
+                                    currentPath[pathCount].Position.y);
+                            else if (currentPath[pathCount].Type == upLeft)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x - 2,
+                                    currentPath[pathCount].Position.y + 1);
+                            else if (currentPath[pathCount].Type == downLeft)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x - 2,
+                                    currentPath[pathCount].Position.y);
                         }
                         else if (Random.Range(0.0f, 10.0f) <= 9.0f)
                         {
                             tile.Type = horizontal;
                             tile.Direction = Direction.Left;
+                            
+                            if (currentPath[pathCount].Type == horizontal)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x - 1,
+                                    currentPath[pathCount].Position.y);
+                            else if (currentPath[pathCount].Type == upLeft)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x - 1,
+                                    currentPath[pathCount].Position.y + 1);
+                            else if (currentPath[pathCount].Type == downLeft)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x - 1,
+                                    currentPath[pathCount].Position.y);
                         }
                         else
                         {
                             tile.Type = upRight;
                             tile.Direction = Direction.Down;
+                            
+                            if (currentPath[pathCount].Type == horizontal)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x - 2,
+                                    currentPath[pathCount].Position.y - 1);
+                            else if (currentPath[pathCount].Type == upLeft)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x - 2,
+                                    currentPath[pathCount].Position.y);
+                            else if (currentPath[pathCount].Type == downLeft)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x - 2,
+                                    currentPath[pathCount].Position.y - 1);
                         }
 
                         break;
@@ -132,21 +195,57 @@ namespace PathGen
                         {
                             tile.Type = downRight;
                             tile.Direction = Direction.Right;
+                            
+                            if (currentPath[pathCount].Type == vertical)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x,
+                                    currentPath[pathCount].Position.y - 2);
+                            else if (currentPath[pathCount].Type == upLeft)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x + 1,
+                                    currentPath[pathCount].Position.y - 2);
+                            else if (currentPath[pathCount].Type == upRight)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x,
+                                    currentPath[pathCount].Position.y - 2);
                         }
                         else if (Random.Range(0.0f, 10.0f) <= 9.0f)
                         {
                             tile.Type = vertical;
                             tile.Direction = Direction.Down;
+                            
+                            if (currentPath[pathCount].Type == vertical)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x,
+                                    currentPath[pathCount].Position.y - 1);
+                            else if (currentPath[pathCount].Type == upLeft)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x + 1,
+                                    currentPath[pathCount].Position.y - 1);
+                            else if (currentPath[pathCount].Type == upRight)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x,
+                                    currentPath[pathCount].Position.y - 1);
                         }
                         else
                         {
                             tile.Type = downLeft;
                             tile.Direction = Direction.Left;
+                            
+                            if (currentPath[pathCount].Type == vertical)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x - 1,
+                                    currentPath[pathCount].Position.y - 2);
+                            else if (currentPath[pathCount].Type == upLeft)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x,
+                                    currentPath[pathCount].Position.y - 2);
+                            else if (currentPath[pathCount].Type == upRight)
+                                tile.Position = new Vector2Int(currentPath[pathCount].Position.x - 1,
+                                    currentPath[pathCount].Position.y - 1);
                         }
 
                         break;
                 }
+
+                pathCount++;
+                currentPath[pathCount] = tile;
             }
+
+            endPos = currentPath[pathCount].Position; // End position should be more concrete in the future. this is only for testing purposes.
+            return currentPath;
         }
     }
 }
