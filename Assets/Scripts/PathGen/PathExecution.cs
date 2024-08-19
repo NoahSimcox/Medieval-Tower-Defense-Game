@@ -2,42 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 
 namespace PathGen
 {
-    public class PathGeneration : MonoBehaviour
+    public class PathExecution : Path
     {
         [SerializeField] private Tilemap tilemap;
         [SerializeField] private int width;
         [SerializeField] private int height;
         [SerializeField] private TileBase tileFill;
-        [SerializeField] private TileBase vertical;
-        [SerializeField] private TileBase horizontal;
-        [SerializeField] private TileBase upRight;
-        [SerializeField] private TileBase upLeft;
-        [SerializeField] private TileBase downRight;
-        [SerializeField] private TileBase downLeft;
+        [SerializeField] private Tile initialTile;
+        [SerializeField] private TileTypes tileTypes;
         [SerializeField] private Vector2Int startPosition;
         private Vector2Int _endPosition;
-        private RandomPathGenerationRight _randomPathRight;
-        // private RandomPathGenerationLeft _randomPathLeft;
-        // private RandomPathGenerationUp _randomPathUp;
-        // private RandomPathGenerationDown _randomPathDown;
+        private RandomPathGeneration _randomPath;
+        
 
-
-        private void PaintTiles(IEnumerable<Vector2Int> positions, Tilemap map, TileBase tile)
+        private void PaintTiles(IEnumerable<Vector2Int> positions, Tilemap map, TileBase tileType)
         {
             foreach (var position in positions)
             {
-                PaintSingleTile(map, tile, position);
+                PaintSingleTile(map, tileType, position);
             }
         }
 
-        private void PaintSingleTile(Tilemap map, TileBase tile, Vector2Int position)
+        private void PaintSingleTile(Tilemap map, TileBase tileType, Vector2Int position)
         {
             Vector3Int tilePosition = map.WorldToCell((Vector3Int)position);
-            map.SetTile(tilePosition, tile);
+            map.SetTile(tilePosition, tileType);
         }
 
         private void Fill(Vector2Int[] pathLocations)
@@ -58,7 +52,6 @@ namespace PathGen
 
         void Start()
         {
-            PaintSingleTile(tilemap, vertical, startPosition);
             
         }
 
@@ -70,7 +63,7 @@ namespace PathGen
 
             if (Input.GetMouseButton(0) && (int)mouseX == startPosition.x && (int)mouseY == startPosition.y)
             {
-
+            //when the start position is clicked
             }
         }
     }
