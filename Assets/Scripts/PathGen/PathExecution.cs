@@ -9,12 +9,10 @@ namespace PathGen
 {
     public class PathExecution : Path
     {
-        [SerializeField] private Tilemap tilemap;
         [SerializeField] private int width;
         [SerializeField] private int height;
         [SerializeField] private TileBase tileFill;
         [SerializeField] private Tile initialTile;
-        [SerializeField] private TileTypes tileTypes;
         [SerializeField] private Vector2Int startPosition;
         private Vector2Int _endPosition;
         private RandomPathGeneration _randomPath;
@@ -28,7 +26,7 @@ namespace PathGen
             }
         }
 
-        private void PaintSingleTile(Tilemap map, TileBase tileType, Vector2Int position)
+        public void PaintSingleTile(Tilemap map, TileBase tileType, Vector2Int position) // public so that RandomPathGen can paint the weird corner tile in a turn
         {
             Vector3Int tilePosition = map.WorldToCell((Vector3Int)position);
             map.SetTile(tilePosition, tileType);

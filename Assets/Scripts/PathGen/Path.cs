@@ -10,7 +10,10 @@ namespace PathGen
     public abstract class Path : MonoBehaviour
     {
 
-        protected Vector2Int Goal => new ((int)Random.Range(8.0f, 15.9f), (int)Random.Range(4.0f, 10.9f));
+        [SerializeField] protected TileTypes tileTypes;
+        [SerializeField] protected Tilemap tilemap;
+        protected List<Tile> currentPath;
+        protected Vector2Int Goal => new((int)Random.Range(8.0f, 15.9f), (int)Random.Range(4.0f, 10.9f));
 
         protected enum Direction
         {
@@ -26,6 +29,7 @@ namespace PathGen
             public Direction direction;
             public Vector2Int position;
             public TileBase type;
+            [HideInInspector] public bool turnTile;
         }
         
 
