@@ -7,15 +7,14 @@ using Random = UnityEngine.Random;
 
 namespace PathGen
 {
-    public abstract class Path : MonoBehaviour
+    public class Path : MonoBehaviour
     {
+        public TileTypes tileTypes;
+        public Tilemap tilemap;
+        
+        protected List<Tile> currentPath = new List<Tile>();
 
-        [SerializeField] protected TileTypes tileTypes;
-        [SerializeField] protected Tilemap tilemap;
-        protected List<Tile> currentPath;
-        protected Vector2Int Goal => new((int)Random.Range(8.0f, 15.9f), (int)Random.Range(4.0f, 10.9f));
-
-        protected enum Direction
+        public enum Direction
         {
             Right,
             Left, 
@@ -24,7 +23,7 @@ namespace PathGen
         }
 
         [Serializable]
-        protected struct Tile
+        public struct Tile
         {
             public Direction direction;
             public Vector2Int position;
@@ -34,7 +33,7 @@ namespace PathGen
         
 
         [Serializable]
-        protected record TileTypes
+        public record TileTypes
         {
             public TileBase vertical;
             public TileBase horizontal;

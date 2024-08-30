@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
@@ -13,20 +15,23 @@ namespace PathGen
         [SerializeField] private int height;
         [SerializeField] private TileBase tileFill;
         [SerializeField] private Tile initialTile;
-        [SerializeField] private Vector2Int startPosition;
-        private Vector2Int _endPosition;
+        [SerializeField] private PathExecution pathExecution;
+        [SerializeField] private Direction scriptDirection;
         private RandomPathGeneration _randomPath;
+        private Vector2Int _endPosition;
         
 
-        private void PaintTiles(IEnumerable<Vector2Int> positions, Tilemap map, TileBase tileType)
+
+        private void PaintTiles(IEnumerable<Tile> tiles, Tilemap map)
         {
-            foreach (var position in positions)
+            foreach (var tile in tiles)
             {
-                PaintSingleTile(map, tileType, position);
+                Debug.Log(tile.position);
+                PaintSingleTile(map, tile.type, tile.position);
             }
         }
 
-        public void PaintSingleTile(Tilemap map, TileBase tileType, Vector2Int position) // public so that RandomPathGen can paint the weird corner tile in a turn
+        public void PaintSingleTile(Tilemap map, TileBase tileType, Vector2Int position)
         {
             Vector3Int tilePosition = map.WorldToCell((Vector3Int)position);
             map.SetTile(tilePosition, tileType);
@@ -47,22 +52,16 @@ namespace PathGen
                 }
             }
         }
-
-        void Start()
+        
+        private void OnMouseUp()
         {
-            
-        }
-
-
-        void Update()
-        {
-            float mouseX = Input.GetAxisRaw("Mouse X");
-            float mouseY = Input.GetAxisRaw("Mouse Y");
-
-            if (Input.GetMouseButton(0) && (int)mouseX == startPosition.x && (int)mouseY == startPosition.y)
-            {
-            //when the start position is clicked
-            }
+            Debug.Log($"Init Pos: {initialTile.position}, Init Direction: {initialTile.direction}, Init Type: {initialTile.type}");
+            _randomPath = new RandomPathGeneration(tilemap, currentPath, tileTypes, initialTile, pathExecution, scriptDirection);
+            List<Tile> tiles = _randomPath.RandomPathGen(out var endPosition, out var endTile, 0, 0);
+            PaintTiles(tiles, tilemap);
+            transform.position = new Vector3(endPosition.x, endPosition.y, 0);
+            initialTile = endTile;
+            Debug.Log($"Init Pos: {initialTile.position}, Init Direction: {initialTile.direction}, Init Type: {initialTile.type}");
         }
     }
 }

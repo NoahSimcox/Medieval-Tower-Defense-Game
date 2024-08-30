@@ -160,7 +160,7 @@ Transform:
   m_GameObject: {fileID: 136807789}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 100, y: 100, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -177,6 +177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 247204422}
   - component: {fileID: 247204423}
+  - component: {fileID: 247204424}
   m_Layer: 0
   m_Name: mapGeneratorRight
   m_TagString: Untagged
@@ -193,7 +194,7 @@ Transform:
   m_GameObject: {fileID: 247204420}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.086467, y: 2.7875233, z: -0.03608622}
+  m_LocalPosition: {x: 108, y: 100, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -208,12 +209,52 @@ MonoBehaviour:
   m_GameObject: {fileID: 247204420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 160d93e3eed543eabe3efdc61d6f8f09, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e784de2afaedda4da514484a19d79e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileTypes:
+    vertical: {fileID: 11400000, guid: df97765c58d3fc642a6f3d7ec7afe93c, type: 2}
+    horizontal: {fileID: 11400000, guid: ac0262ab99bba324cbd0a3ee4c39b41e, type: 2}
+    upRight: {fileID: 11400000, guid: af4527d28d034a3499d1abeb633c3bf1, type: 2}
+    upLeft: {fileID: 11400000, guid: 7bc8f46584553db4b94992401a850079, type: 2}
+    downRight: {fileID: 11400000, guid: 4881754aa5b26e249ac22dcb780f0de7, type: 2}
+    downLeft: {fileID: 11400000, guid: e9307c2d48a6fb348b8a6217793ba868, type: 2}
+    rightUp: {fileID: 11400000, guid: 13f9bcb7d7978aa44a531e2320fdaa74, type: 2}
+    leftUp: {fileID: 11400000, guid: 038571ec160caf144bc8b5292ba48ef4, type: 2}
+    rightDown: {fileID: 11400000, guid: a9607cefc872276428aa97b0b7cbebaf, type: 2}
+    leftDown: {fileID: 11400000, guid: ba6a55c21856bee4db053c6a75ace3a3, type: 2}
   tilemap: {fileID: 2037464874}
+  width: 0
+  height: 0
+  tileFill: {fileID: 0}
+  initialTile:
+    direction: 0
+    position: {x: 108, y: 100}
+    type: {fileID: 11400000, guid: ac0262ab99bba324cbd0a3ee4c39b41e, type: 2}
+    turnTile: 0
+  pathExecution: {fileID: 247204423}
   startPosition: {x: 109, y: 100}
-  tileFill: {fileID: 11400000, guid: 92dcc6968c24f024e9924d46fc3fb543, type: 2}
+--- !u!65 &247204424
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247204420}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0.5, y: 0.5, z: 0}
 --- !u!1 &402607660
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +264,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 402607662}
-  - component: {fileID: 402607661}
   m_Layer: 0
   m_Name: mapGeneratorLeft
   m_TagString: Untagged
@@ -231,18 +271,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &402607661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 402607660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3ee18dbbe948a44dbc18583c7d5b34e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &402607662
 Transform:
   m_ObjectHideFlags: 0
@@ -364,7 +392,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.330979
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -497,7 +525,7 @@ GameObject:
   - component: {fileID: 2037464873}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground Tilemap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -511,7 +539,7 @@ Transform:
   m_GameObject: {fileID: 2037464871}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 100, y: 100, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
