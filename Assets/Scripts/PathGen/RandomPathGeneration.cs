@@ -1,50 +1,34 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using Unity.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 namespace PathGen
 {
-    public class RandomPathGeneration
+    public class RandomPathGeneration : Path
     {
-        private readonly Vector2Int _goal;
-        private readonly List<Path.Tile> _currentPath;
-        private readonly Path.TileTypes _tileTypes;
-        private readonly Tilemap _tilemap;
-        private readonly Path.Tile _startingTile;
-        private readonly PathExecution _pathExecution;
-        public RandomPathGeneration(Tilemap tilemap, List<Path.Tile> currentPath, Path.TileTypes tileTypes, Path.Tile startingTile, PathExecution pathExecution, Path.Direction scriptDirection)
-        {
-            _tilemap = tilemap;
-            _currentPath = currentPath;
-            _tileTypes = tileTypes;
-            _startingTile = startingTile;
-            _pathExecution = pathExecution;
-            _goal = GoalSetting(scriptDirection, startingTile);
-            Debug.Log(_goal);
-            Debug.DrawLine(new Vector3(_goal.x, _goal.y, -10), new Vector3(_goal.x, _goal.y+0.5f, -10), Color.red, 100000f);
-        }
+        // protected override void Start()
+        // {
+        //     base.Start();
+        //     Debug.Log(tileTypes.horizontal);
+        // }
         
-        public List<Path.Tile> RandomPathGen(out Vector2Int endPos, out Path.Tile endTile, int width, int height)
+        public List<Tile> RandomPathGen(out Vector2Int endPos, out Tile endTile)
         {
-            
+            Debug.Log(StartingTile.type);
+            Debug.Log(TileTypes.horizontal);
             var pathCount = 0;
+            currentPath.Add(StartingTile);
+            GoalSetting();
+            Func<int, bool> loopCondition = DirectionConditions();
 
-            _currentPath.Add(_startingTile);
-
-            while (_currentPath[pathCount].position.x < _goal.x)
+            while (loopCondition!(pathCount))
             {
-                var currentTile = _currentPath[pathCount];
+                var currentTile = currentPath[pathCount];
 
-                Path.Tile tile = WeightedRandomChoice(currentTile);
+                Tile tile = WeightedRandomChoice(currentTile);
 
                 if (tile.turnTile) // in this case a turnTile was placed as opposed to a normal tile
                 {
@@ -53,30 +37,25 @@ namespace PathGen
                 }
 
                 pathCount++;
-                _currentPath.Add(tile);
+                currentPath.Add(tile);
             }
-
-            endPos = _currentPath[pathCount].position;
-            endTile = _currentPath[pathCount];
-            return _currentPath;
+            
+            endPos = currentPath[pathCount].position;
+            endTile = currentPath[pathCount];
+            currentPath.RemoveAt(0);
+            return currentPath;
         }
 
 
-        private Path.Tile WeightedRandomChoice(Path.Tile currentTile)
+        private Tile WeightedRandomChoice(Tile currentTile)
         {
             float randomValue = Random.Range(0.0f, 10.0f);
-            List<Path.Direction> directionsList = new List<Path.Direction>();
-            
-            foreach (var direction in OptimalDirections(currentTile))
+            List<Direction> directionsList = OptimalDirections(currentTile).ToList();
+
+
+            Tile newTile = randomValue switch
             {
-                directionsList.Add(direction);
-            }
-            
-            
-            Path.Tile newTile = randomValue switch
-            {
-                <= 6.0f => DetermineTileType(currentTile, directionsList[0]),
-                // <= 7.0f => DetermineTileType(currentTile, directionsList[1]),
+                <= 6.5f => DetermineTileType(currentTile, directionsList[0]),
                 _ => DetermineTileType(currentTile, directionsList[1])
             };
 
@@ -84,11 +63,10 @@ namespace PathGen
         }
         
         
-        private Path.Tile CreateTile(TileBase type, Path.Direction direction, Path.Tile currentTile) => new Path.Tile { type = type, direction = direction, position = CalculateNewPosition(currentTile)};
-        private Path.Tile CreateTurnTile(TileBase type, Path.Direction direction, Path.Tile currentTile)
+        private Tile CreateTile(TileBase type, Direction direction, Tile currentTile) => new Tile { type = type, direction = direction, position = CalculateNewPosition(currentTile)};
+        private Tile CreateTurnTile(TileBase type, Direction direction, Tile currentTile)
         {
-            List<Path.Tile> newTurnTiles = new List<Path.Tile>();
-            PathExecution paintCornerTile = _pathExecution;
+            PathExecution paintCornerTile = GetComponent<PathExecution>();
             Vector2Int tilePosition = currentTile.position;
 
             var turnTilePositions = new { up = new Func<Vector2Int>(() => tilePosition += Vector2Int.up), 
@@ -100,23 +78,22 @@ namespace PathGen
             
             var tileActions = new Dictionary<TileBase, (Func<Vector2Int>, Func<Vector2Int>, Func<Vector2Int>, Func<Vector2Int>)>
             {
-                { _tileTypes.upRight, (turnTilePositions.up, turnTilePositions.up, turnTilePositions.right, turnTilePositions.down)},
-                { _tileTypes.upLeft, (turnTilePositions.up, turnTilePositions.up, turnTilePositions.left, turnTilePositions.down)},
-                { _tileTypes.downRight, (turnTilePositions.down, turnTilePositions.down, turnTilePositions.right, turnTilePositions.up)},
-                { _tileTypes.downLeft, (turnTilePositions.down, turnTilePositions.down, turnTilePositions.left, turnTilePositions.up)},
-                { _tileTypes.rightUp, (turnTilePositions.right, turnTilePositions.right, turnTilePositions.up, turnTilePositions.left)},
-                { _tileTypes.rightDown, (turnTilePositions.right, turnTilePositions.right, turnTilePositions.down, turnTilePositions.left)},
-                { _tileTypes.leftUp, (turnTilePositions.left, turnTilePositions.left, turnTilePositions.up, turnTilePositions.right)},
-                { _tileTypes.leftDown, (turnTilePositions.left, turnTilePositions.left, turnTilePositions.down, turnTilePositions.right)}
+                { TileTypes.upRight, (turnTilePositions.up, turnTilePositions.up, turnTilePositions.right, turnTilePositions.down)},
+                { TileTypes.upLeft, (turnTilePositions.up, turnTilePositions.up, turnTilePositions.left, turnTilePositions.down)},
+                { TileTypes.downRight, (turnTilePositions.down, turnTilePositions.down, turnTilePositions.right, turnTilePositions.up)},
+                { TileTypes.downLeft, (turnTilePositions.down, turnTilePositions.down, turnTilePositions.left, turnTilePositions.up)},
+                { TileTypes.rightUp, (turnTilePositions.right, turnTilePositions.right, turnTilePositions.up, turnTilePositions.left)},
+                { TileTypes.rightDown, (turnTilePositions.right, turnTilePositions.right, turnTilePositions.down, turnTilePositions.left)},
+                { TileTypes.leftUp, (turnTilePositions.left, turnTilePositions.left, turnTilePositions.up, turnTilePositions.right)},
+                { TileTypes.leftDown, (turnTilePositions.left, turnTilePositions.left, turnTilePositions.down, turnTilePositions.right)}
             };
 
             if (tileActions.TryGetValue(type, out var newTilePosition))
             {
-                var tuple = tileActions[type];
-                var tupleItems = new [] { tuple.Item1, tuple.Item2, tuple.Item3 };
+                var tupleItems = new [] { newTilePosition.Item1, newTilePosition.Item2, newTilePosition.Item3 };
                 foreach (var position in tupleItems)
                 {
-                    _currentPath.Add( new Path.Tile
+                    currentPath.Add( new Tile
                     {
                         type = type,
                         direction = direction,
@@ -125,43 +102,44 @@ namespace PathGen
                     });
                 }
 
-                paintCornerTile.PaintSingleTile(_tilemap, type, tuple.Item4());
+                paintCornerTile.PaintSingleTile(Tilemap, type, newTilePosition.Item4());
             }
 
-            return new Path.Tile() // dummy tile
+            return new Tile() // dummy tile
             {
                 turnTile = true
             };
         }
 
-        private Path.Tile DetermineTileType(Path.Tile currentTile, Path.Direction newDirection) =>
+        private Tile DetermineTileType(Tile currentTile, Direction newDirection) =>
             currentTile.direction switch
             { 
-                Path.Direction.Up when newDirection == Path.Direction.Up => CreateTile(_tileTypes.vertical, Path.Direction.Up, currentTile),
-                Path.Direction.Up when newDirection == Path.Direction.Right => CreateTurnTile(_tileTypes.upRight,Path.Direction.Right, currentTile),
-                Path.Direction.Up when newDirection == Path.Direction.Left => CreateTurnTile(_tileTypes.upLeft,Path.Direction.Left, currentTile),
-                Path.Direction.Down when newDirection == Path.Direction.Down => CreateTile(_tileTypes.vertical,Path.Direction.Down, currentTile),
-                Path.Direction.Down when newDirection == Path.Direction.Right => CreateTurnTile(_tileTypes.downRight,Path.Direction.Right, currentTile),
-                Path.Direction.Down when newDirection == Path.Direction.Left => CreateTurnTile(_tileTypes.downLeft,Path.Direction.Left, currentTile),
-                Path.Direction.Left when newDirection == Path.Direction.Left => CreateTile(_tileTypes.horizontal,Path.Direction.Left, currentTile),
-                Path.Direction.Left when newDirection == Path.Direction.Up => CreateTurnTile(_tileTypes.leftUp,Path.Direction.Up, currentTile),
-                Path.Direction.Left when newDirection == Path.Direction.Down => CreateTurnTile(_tileTypes.leftDown,Path.Direction.Down, currentTile),
-                Path.Direction.Right when newDirection == Path.Direction.Right => CreateTile(_tileTypes.horizontal,Path.Direction.Right, currentTile),
-                Path.Direction.Right when newDirection == Path.Direction.Up => CreateTurnTile(_tileTypes.rightUp,Path.Direction.Up, currentTile),
-                Path.Direction.Right when newDirection == Path.Direction.Down => CreateTurnTile(_tileTypes.rightDown,Path.Direction.Down, currentTile)
+                Direction.Up when newDirection == Direction.Up => CreateTile(TileTypes.vertical, Direction.Up, currentTile),
+                Direction.Up when newDirection == Direction.Right => CreateTurnTile(TileTypes.upRight,Direction.Right, currentTile),
+                Direction.Up when newDirection == Direction.Left => CreateTurnTile(TileTypes.upLeft,Direction.Left, currentTile),
+                Direction.Down when newDirection == Direction.Down => CreateTile(TileTypes.vertical,Direction.Down, currentTile),
+                Direction.Down when newDirection == Direction.Right => CreateTurnTile(TileTypes.downRight,Direction.Right, currentTile),
+                Direction.Down when newDirection == Direction.Left => CreateTurnTile(TileTypes.downLeft,Direction.Left, currentTile),
+                Direction.Left when newDirection == Direction.Left => CreateTile(TileTypes.horizontal,Direction.Left, currentTile),
+                Direction.Left when newDirection == Direction.Up => CreateTurnTile(TileTypes.leftUp,Direction.Up, currentTile),
+                Direction.Left when newDirection == Direction.Down => CreateTurnTile(TileTypes.leftDown,Direction.Down, currentTile),
+                Direction.Right when newDirection == Direction.Right => CreateTile(TileTypes.horizontal,Direction.Right, currentTile),
+                Direction.Right when newDirection == Direction.Up => CreateTurnTile(TileTypes.rightUp,Direction.Up, currentTile),
+                Direction.Right when newDirection == Direction.Down => CreateTurnTile(TileTypes.rightDown,Direction.Down, currentTile),
+                _ => throw new Exception("balls")
             };
 
-        private IEnumerable<Path.Direction> OptimalDirections(Path.Tile currentTile)
+        private IEnumerable<Direction> OptimalDirections(Tile currentTile)
         {
-            Dictionary<float,Path.Direction> distances = new Dictionary<float,Path.Direction>();
+            Dictionary<float,Direction> distances = new Dictionary<float,Direction>();
             float rand = Random.Range(-0.1f, 0.1f);
                 
             var cases = new (Func<bool> condition, Action action)[]
             {
-                (() => currentTile.direction !=Path.Direction.Down, () => distances.Add(Vector2Int.Distance(currentTile.position + Vector2Int.up, _goal) + rand,Path.Direction.Up)),
-                (() => currentTile.direction !=Path.Direction.Up, () => distances.Add(Vector2Int.Distance(currentTile.position + Vector2Int.down, _goal) + (rand + 0.01f),Path.Direction.Down)),
-                (() => currentTile.direction !=Path.Direction.Right, () => distances.Add(Vector2Int.Distance(currentTile.position + Vector2Int.left, _goal) + (rand + 0.02f),Path.Direction.Left)),
-                (() => currentTile.direction !=Path.Direction.Left, () => distances.Add(Vector2Int.Distance(currentTile.position + Vector2Int.right, _goal) + (rand + 0.03f),Path.Direction.Right))
+                (() => currentTile.direction !=Direction.Down, () => distances.Add(Vector2Int.Distance(currentTile.position + Vector2Int.up, Goal) + rand,Direction.Up)),
+                (() => currentTile.direction !=Direction.Up, () => distances.Add(Vector2Int.Distance(currentTile.position + Vector2Int.down, Goal) + (rand + 0.01f),Direction.Down)),
+                (() => currentTile.direction !=Direction.Right, () => distances.Add(Vector2Int.Distance(currentTile.position + Vector2Int.left, Goal) + (rand + 0.02f),Direction.Left)),
+                (() => currentTile.direction !=Direction.Left, () => distances.Add(Vector2Int.Distance(currentTile.position + Vector2Int.right, Goal) + (rand + 0.03f),Direction.Right))
             };
 
             foreach (var (condition, action) in cases)
@@ -174,39 +152,48 @@ namespace PathGen
                    select dist.Value;
         }
 
-        private Vector2Int CalculateNewPosition(Path.Tile currentTile)
+        private Vector2Int CalculateNewPosition(Tile currentTile)
         {
             Vector2Int currentPosition = currentTile.position;
             
             return currentTile.direction switch
             {
-                Path.Direction.Up => currentPosition + Vector2Int.up,
-                Path.Direction.Down => currentPosition + Vector2Int.down,
-                Path.Direction.Left => currentPosition + Vector2Int.left,
-                Path.Direction.Right => currentPosition + Vector2Int.right,
+                Direction.Up => currentPosition + Vector2Int.up,
+                Direction.Down => currentPosition + Vector2Int.down,
+                Direction.Left => currentPosition + Vector2Int.left,
+                Direction.Right => currentPosition + Vector2Int.right,
                 _ => Vector2Int.zero
             };
             
         }
 
-        private Vector2Int GoalSetting(Path.Direction scriptDirection, Path.Tile startingTile)
+        private void GoalSetting()
         {
 
-            Vector2Int randVector = scriptDirection switch
+            Vector2Int randVector = ScriptDirection switch
             {
-                Path.Direction.Up or Path.Direction.Down => new((int)Random.Range(-6.9f, 6.9f), (int)Random.Range(10.0f, 20.0f)),
-                Path.Direction.Right or Path.Direction.Left => new((int)Random.Range(10.0f, 20.0f), (int)Random.Range(-6.9f, 6.9f)),
+                Direction.Up or Direction.Down => new((int)Random.Range(-6.9f, 6.9f), (int)Random.Range(10.0f, 20.0f)),
+                Direction.Right or Direction.Left => new((int)Random.Range(10.0f, 20.0f), (int)Random.Range(-6.9f, 6.9f)),
                 _ => Vector2Int.zero
             };
             
-            Vector2Int goalDirection = scriptDirection switch
+            Vector2Int goalDirection = ScriptDirection switch
             {
-                Path.Direction.Down => new Vector2Int(1, -1),
-                Path.Direction.Left => new Vector2Int(-1, 1),
+                Direction.Down => new Vector2Int(1, -1),
+                Direction.Left => new Vector2Int(-1, 1),
                 _ => new Vector2Int(1,1)
             };
 
-            return Vector2Int.Scale(randVector, goalDirection) + startingTile.position;
+            Goal = Vector2Int.Scale(randVector, goalDirection) + StartingTile.position;
         }
+
+        private Func<int, bool> DirectionConditions() => ScriptDirection switch
+        {
+            Direction.Right => x => currentPath[x].position.x < Goal.x,
+            Direction.Up => x => currentPath[x].position.y < Goal.y,
+            Direction.Left => x => currentPath[x].position.x > Goal.x,
+            Direction.Down => x => currentPath[x].position.y > Goal.y,
+            _ => null
+        };
     }
 }

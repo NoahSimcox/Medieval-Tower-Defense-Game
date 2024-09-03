@@ -1,32 +1,16 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Xml.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 
 namespace PathGen
 {
-    public class PathExecution : Path
+    public class PathExecution : MonoBehaviour
     {
-        [SerializeField] private int width;
-        [SerializeField] private int height;
-        [SerializeField] private TileBase tileFill;
-        [SerializeField] private Tile initialTile;
-        [SerializeField] private PathExecution pathExecution;
-        [SerializeField] private Direction scriptDirection;
-        private RandomPathGeneration _randomPath;
-        private Vector2Int _endPosition;
-        
-
-
         private void PaintTiles(IEnumerable<Tile> tiles, Tilemap map)
         {
             foreach (var tile in tiles)
             {
-                Debug.Log(tile.position);
+                Debug.Log($"Pos: {tile.position}, Type: {tile.type}");
                 PaintSingleTile(map, tile.type, tile.position);
             }
         }
@@ -36,32 +20,29 @@ namespace PathGen
             Vector3Int tilePosition = map.WorldToCell((Vector3Int)position);
             map.SetTile(tilePosition, tileType);
         }
-
-        private void Fill(Vector2Int[] pathLocations)
-        {
-
-            for (int i = 0; i < width; i++)
-            {
-                for (int j = 0; j < height; j++)
-                {
-                    foreach (var position in pathLocations)
-                    {
-                        if (position.x != i || position.y != j)
-                            PaintSingleTile(tilemap, tileFill, new Vector2Int(i, j));
-                    }
-                }
-            }
-        }
+        
+        // private Func<bool> DirectionConditions(List<Path.Tile> tiles) => scriptDirection switch
+        // {
+        //     Path.Direction.Right => () => tiles[0].position.x < tiles[^1].position.x,
+        //     Path.Direction.Up => () => tiles[0].position.y < tiles[^1].position.y,
+        //     Path.Direction.Left => () => tiles[0].position.x > tiles[^1].position.x,
+        //     Path.Direction.Down => () => tiles[0].position.y > tiles[^1].position.y,
+        //     _ => null
+        // };
+        
         
         private void OnMouseUp()
         {
-            Debug.Log($"Init Pos: {initialTile.position}, Init Direction: {initialTile.direction}, Init Type: {initialTile.type}");
-            _randomPath = new RandomPathGeneration(tilemap, currentPath, tileTypes, initialTile, pathExecution, scriptDirection);
-            List<Tile> tiles = _randomPath.RandomPathGen(out var endPosition, out var endTile, 0, 0);
-            PaintTiles(tiles, tilemap);
+            Path path = GetComponent<Path>();
+            PathConfig pathConfig = GetComponent<PathConfig>();
+            RandomPathGeneration randomPath = GetComponent<RandomPathGeneration>();
+            List<Tile> tiles = randomPath.RandomPathGen(out var endPosition, out var endTile);
+            
+            PaintTiles(tiles, pathConfig.tilemap);
+            
             transform.position = new Vector3(endPosition.x, endPosition.y, 0);
-            initialTile = endTile;
-            Debug.Log($"Init Pos: {initialTile.position}, Init Direction: {initialTile.direction}, Init Type: {initialTile.type}");
+            pathConfig.startingTile = endTile;
+            path.currentPath.Clear();
         }
     }
 }
