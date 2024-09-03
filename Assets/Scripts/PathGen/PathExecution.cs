@@ -36,8 +36,8 @@ namespace PathGen
             Path path = GetComponent<Path>();
             PathConfig pathConfig = GetComponent<PathConfig>();
             RandomPathGeneration randomPath = GetComponent<RandomPathGeneration>();
-            List<Tile> tiles = randomPath.RandomPathGen(out var endPosition, out var endTile);
             
+            List<Tile> tiles = randomPath.RandomPathGen(out var endPosition, out var endTile);
             PaintTiles(tiles, pathConfig.tilemap);
             
             transform.position = new Vector3(endPosition.x, endPosition.y, 0);
