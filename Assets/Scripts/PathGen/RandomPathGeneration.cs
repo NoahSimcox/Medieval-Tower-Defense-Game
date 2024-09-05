@@ -7,18 +7,11 @@ using Random = UnityEngine.Random;
 
 namespace PathGen
 {
-    public class RandomPathGeneration : Path
+    public class RandomPathGeneration : PathData
     {
-        // protected override void Start()
-        // {
-        //     base.Start();
-        //     Debug.Log(tileTypes.horizontal);
-        // }
         
         public List<Tile> RandomPathGen(out Vector2Int endPos, out Tile endTile)
         {
-            Debug.Log(StartingTile.type);
-            Debug.Log(TileTypes.horizontal);
             var pathCount = 0;
             currentPath.Add(StartingTile);
             GoalSetting();

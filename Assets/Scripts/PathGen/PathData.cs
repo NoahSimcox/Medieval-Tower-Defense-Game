@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 namespace PathGen
 {
-    public class Path : MonoBehaviour
+    public class PathData : MonoBehaviour
     {
         [SerializeField] private PathConfig pathConfig;
         

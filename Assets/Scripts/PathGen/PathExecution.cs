@@ -6,7 +6,7 @@ namespace PathGen
 {
     public class PathExecution : MonoBehaviour
     {
-        private void PaintTiles(IEnumerable<Tile> tiles, Tilemap map)
+        private void PaintTiles(List<Tile> tiles, Tilemap map)
         {
             foreach (var tile in tiles)
             {
@@ -21,28 +21,22 @@ namespace PathGen
             map.SetTile(tilePosition, tileType);
         }
         
-        // private Func<bool> DirectionConditions(List<Path.Tile> tiles) => scriptDirection switch
-        // {
-        //     Path.Direction.Right => () => tiles[0].position.x < tiles[^1].position.x,
-        //     Path.Direction.Up => () => tiles[0].position.y < tiles[^1].position.y,
-        //     Path.Direction.Left => () => tiles[0].position.x > tiles[^1].position.x,
-        //     Path.Direction.Down => () => tiles[0].position.y > tiles[^1].position.y,
-        //     _ => null
-        // };
-        
-        
         private void OnMouseUp()
         {
-            Path path = GetComponent<Path>();
+            PathData pathData = GetComponent<PathData>();
             PathConfig pathConfig = GetComponent<PathConfig>();
             RandomPathGeneration randomPath = GetComponent<RandomPathGeneration>();
+            RandomFieldGeneration randomField = GetComponent<RandomFieldGeneration>();
             
-            List<Tile> tiles = randomPath.RandomPathGen(out var endPosition, out var endTile);
-            PaintTiles(tiles, pathConfig.tilemap);
-            
+            List<Tile> pathTiles = randomPath.RandomPathGen(out var endPosition, out var endTile);
+            PaintTiles(pathTiles, pathConfig.tilemap);
             transform.position = new Vector3(endPosition.x, endPosition.y, 0);
+
+            List<Tile> grassTiles = randomField.FillWithGrass(pathTiles);
+            PaintTiles(grassTiles, pathConfig.tilemap);
+            
             pathConfig.startingTile = endTile;
-            path.currentPath.Clear();
+            pathData.currentPath.Clear();
         }
     }
 }

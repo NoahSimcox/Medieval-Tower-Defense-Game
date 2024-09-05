@@ -1,4 +1,5 @@
 using System;
+using System.Data;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -36,5 +37,8 @@ namespace PathGen
         public RuleTile leftUp;
         public RuleTile rightDown;
         public RuleTile leftDown;
+
+        public TileBase grassTile;
+        public RuleTile rockBorder;
     }
 }
